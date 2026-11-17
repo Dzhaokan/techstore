@@ -7,3 +7,10 @@ export interface Product {
   rating: number;
   thumbnail: string;
 }
+
+export interface ProductsResponse {
+  products: Product[];
+  total: number;
+  skip: number;
+  limit: number;
+}
