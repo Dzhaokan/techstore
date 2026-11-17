@@ -1,0 +1,51 @@
+@use '../../styles/variables' as *;
+
+.header {
+  background: $white;
+  border-bottom: 1px solid $border;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.inner {
+  max-width: $container;
+  margin: 0 auto;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 20px;
+  color: $primary;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+
+  a {
+    padding: 4px 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.15s;
+
+    &:hover {
+      border-color: $primary-light;
+    }
+  }
+}
+
+.active {
+  border-color: $primary !important;
+}
+
+@media (max-width: 480px) {
+  .nav {
+    gap: 12px;
+    font-size: 14px;
+  }
+}
