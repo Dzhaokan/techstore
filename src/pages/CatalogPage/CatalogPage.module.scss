@@ -29,3 +29,21 @@
     grid-template-columns: 1fr;
   }
 }
+
+.retry {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: $primary;
+  color: $white;
+  font-weight: 600;
+
+  &:hover {
+    background: $primary-dark;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $primary-dark;
+    outline-offset: 2px;
+  }
+}
