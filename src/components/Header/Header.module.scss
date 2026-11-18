@@ -36,11 +36,11 @@
     &:hover {
       border-color: $primary-light;
     }
-  }
-}
 
-.active {
-  border-color: $primary !important;
+    &.active {
+      border-color: $primary;
+    }
+  }
 }
 
 @media (max-width: 480px) {
