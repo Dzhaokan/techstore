@@ -1,0 +1,19 @@
+@use '../../styles/variables' as *;
+
+.wrapper {
+  text-align: center;
+  padding: 60px 16px;
+  color: $text-muted;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 20px;
+  color: $text;
+}
+.text {
+  margin: 0;
+}
+.action {
+  margin-top: 20px;
+}
