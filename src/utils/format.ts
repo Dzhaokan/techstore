@@ -6,7 +6,14 @@ export function formatPrice(price: number): string {
   return `${formatted} сом`;
 }
 
-// в api категории вида "mobile-accessories"
+// в api категории на английском вида "mobile-accessories"
+const CATEGORY_LABELS: Record<string, string> = {
+  smartphones: 'Смартфоны',
+  laptops: 'Ноутбуки',
+  tablets: 'Планшеты',
+  'mobile-accessories': 'Аксессуары',
+};
+
 export function formatCategory(category: string): string {
-  return category.replace(/-/g, ' ');
+  return CATEGORY_LABELS[category] ?? category.replace(/-/g, ' ');
 }
