@@ -1,0 +1,63 @@
+@use '../../styles/variables' as *;
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search,
+.select {
+  padding: 9px 12px;
+  border: 1px solid $border;
+  border-radius: 8px;
+  background: $white;
+  transition: border-color 0.15s;
+
+  &:hover {
+    border-color: $primary-light;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+  }
+}
+
+.search {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.select {
+  flex: 0 1 auto;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.reset {
+  padding: 9px 16px;
+  border: 1px solid $border;
+  border-radius: 8px;
+  background: $white;
+  font-weight: 600;
+  transition:
+    border-color 0.15s,
+    color 0.15s;
+
+  &:hover {
+    border-color: $primary;
+    color: $primary;
+  }
+}
+
+@media (max-width: 600px) {
+  .search {
+    flex-basis: 100%;
+  }
+
+  .select {
+    flex: 1 1 calc(50% - 5px);
+  }
+}
