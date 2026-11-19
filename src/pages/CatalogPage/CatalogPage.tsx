@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { useGetProductsQuery } from '../../features/products/productsApi';
 import { filterProducts, initialFilters, type Filters } from '../../utils/filterProducts';
 import CatalogFilters from '../../components/CatalogFilters/CatalogFilters';
-import ProductCard from '../../components/ProductCard/ProductCard';
+import ProductGrid from '../../components/ProductGrid/ProductGrid';
 import Loader from '../../components/Loader/Loader';
 import EmptyState from '../../components/EmptyState/EmptyState';
 import styles from './CatalogPage.module.scss';
@@ -43,7 +43,14 @@ function CatalogPage() {
 
   return (
     <div>
-      <h1 className={styles.heading}>Каталог</h1>
+      <div className={styles.top}>
+        <h1 className={styles.heading}>Каталог</h1>
+        {products && (
+          <span className={styles.count}>
+            {visibleProducts.length} из {products.length}
+          </span>
+        )}
+      </div>
 
       <CatalogFilters
         filters={filters}
@@ -63,11 +70,7 @@ function CatalogPage() {
           }
         />
       ) : (
-        <div className={styles.grid}>
-          {visibleProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        <ProductGrid products={visibleProducts} />
       )}
     </div>
   );
