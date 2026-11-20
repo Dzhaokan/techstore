@@ -1,0 +1,97 @@
+@use '../../styles/variables' as *;
+
+.back {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: $text-muted;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+.backBtn {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid $border;
+  border-radius: 8px;
+  background: $white;
+  font-weight: 600;
+
+  &:hover {
+    border-color: $primary;
+    color: $primary;
+  }
+}
+
+.product {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 32px;
+  background: $white;
+  border: 1px solid $border;
+  border-radius: $radius;
+  padding: 24px;
+}
+
+.imageBox {
+  background: $bg;
+  border-radius: $radius;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.category {
+  font-size: 13px;
+  color: $text-muted;
+  text-transform: capitalize;
+}
+
+.title {
+  margin: 0;
+  font-size: 26px;
+  line-height: 1.25;
+}
+
+.rating {
+  color: $star;
+  font-weight: 600;
+}
+
+.description {
+  margin: 0;
+  color: $text-muted;
+}
+
+.price {
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+  .product {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 16px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+}
