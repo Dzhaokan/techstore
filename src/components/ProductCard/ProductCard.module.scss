@@ -15,6 +15,10 @@
   }
 }
 
+.imageLink {
+  display: block;
+}
+
 .image {
   width: 100%;
   aspect-ratio: 1;
@@ -47,6 +51,10 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   min-height: 2.7em;
+
+  a:hover {
+    color: $primary;
+  }
 }
 
 .bottom {
@@ -65,4 +73,26 @@
 .rating {
   font-size: 14px;
   color: $star;
+}
+
+.addBtn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 7px 12px;
+  border: none;
+  border-radius: 8px;
+  background: $primary;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.15s;
+
+  &:hover {
+    background: $primary-dark;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $primary-dark;
+    outline-offset: 2px;
+  }
 }

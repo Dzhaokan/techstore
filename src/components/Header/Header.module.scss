@@ -29,6 +29,9 @@
   gap: 20px;
 
   a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     padding: 4px 0;
     border-bottom: 2px solid transparent;
     transition: border-color 0.15s;
@@ -41,6 +44,19 @@
       border-color: $primary;
     }
   }
+}
+
+.badge {
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background: $primary;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: center;
 }
 
 @media (max-width: 480px) {

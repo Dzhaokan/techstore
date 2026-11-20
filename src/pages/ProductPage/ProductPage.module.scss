@@ -83,6 +83,33 @@
   margin-top: 8px;
 }
 
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.addBtn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: $primary;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.15s;
+
+  &:hover {
+    background: $primary-dark;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $primary-dark;
+    outline-offset: 2px;
+  }
+}
+
 @media (max-width: 768px) {
   .product {
     grid-template-columns: 1fr;
