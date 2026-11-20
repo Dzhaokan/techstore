@@ -5,6 +5,7 @@ import CatalogFilters from '../../components/CatalogFilters/CatalogFilters';
 import ProductGrid from '../../components/ProductGrid/ProductGrid';
 import Loader from '../../components/Loader/Loader';
 import EmptyState from '../../components/EmptyState/EmptyState';
+import Button from '../../components/Button/Button';
 import styles from './CatalogPage.module.scss';
 
 function CatalogPage() {
@@ -32,11 +33,7 @@ function CatalogPage() {
       <EmptyState
         title="Не удалось загрузить товары"
         text="Проверьте подключение к интернету и попробуйте еще раз"
-        action={
-          <button className={styles.retry} onClick={() => refetch()}>
-            Повторить
-          </button>
-        }
+        action={<Button onClick={() => refetch()}>Повторить</Button>}
       />
     );
   }
@@ -64,9 +61,9 @@ function CatalogPage() {
           title="Ничего не найдено"
           text="Попробуйте изменить запрос или сбросить фильтры"
           action={
-            <button className={styles.retry} onClick={handleReset}>
+            <Button variant="secondary" onClick={handleReset}>
               Сбросить фильтры
-            </button>
+            </Button>
           }
         />
       ) : (

@@ -35,22 +35,6 @@
   cursor: pointer;
 }
 
-.reset {
-  padding: 9px 16px;
-  border: 1px solid $border;
-  border-radius: 8px;
-  background: $white;
-  font-weight: 600;
-  transition:
-    border-color 0.15s,
-    color 0.15s;
-
-  &:hover {
-    border-color: $primary;
-    color: $primary;
-  }
-}
-
 @media (max-width: 600px) {
   .search {
     flex-basis: 100%;

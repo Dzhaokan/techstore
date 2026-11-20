@@ -1,6 +1,7 @@
 import type { SortOrder } from '../../types/product';
 import { ALL_CATEGORIES, type Filters } from '../../utils/filterProducts';
 import { formatCategory } from '../../utils/format';
+import Button from '../Button/Button';
 import styles from './CatalogFilters.module.scss';
 
 interface CatalogFiltersProps {
@@ -55,9 +56,9 @@ function CatalogFilters({ filters, categories, onChange, onReset }: CatalogFilte
         ))}
       </select>
 
-      <button type="button" className={styles.reset} onClick={onReset}>
+      <Button variant="secondary" onClick={onReset}>
         Сбросить
-      </button>
+      </Button>
     </div>
   );
 }

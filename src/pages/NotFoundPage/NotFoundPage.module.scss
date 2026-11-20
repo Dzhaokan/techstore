@@ -21,16 +21,3 @@
   margin: 0 0 24px;
   color: $text-muted;
 }
-
-.link {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 8px;
-  background: $primary;
-  color: #fff;
-  font-weight: 600;
-
-  &:hover {
-    background: $primary-dark;
-  }
-}
