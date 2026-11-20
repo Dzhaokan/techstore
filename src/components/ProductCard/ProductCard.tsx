@@ -3,6 +3,7 @@ import type { Product } from '../../types/product';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addToCart, selectCartItemById } from '../../features/cart/cartSlice';
 import { formatCategory, formatPrice } from '../../utils/format';
+import FavoriteButton from '../FavoriteButton/FavoriteButton';
 import styles from './ProductCard.module.scss';
 
 interface ProductCardProps {
@@ -17,6 +18,8 @@ function ProductCard({ product }: ProductCardProps) {
 
   return (
     <article className={styles.card}>
+      <FavoriteButton productId={product.id} className={styles.favorite} />
+
       <Link to={link} className={styles.imageLink}>
         <img src={product.thumbnail} alt={product.title} className={styles.image} loading="lazy" />
       </Link>
