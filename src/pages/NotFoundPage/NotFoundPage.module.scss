@@ -1,0 +1,36 @@
+@use '../../styles/variables' as *;
+
+.page {
+  text-align: center;
+  padding: 60px 16px;
+}
+
+.code {
+  font-size: 96px;
+  font-weight: 800;
+  line-height: 1;
+  color: $primary-light;
+}
+
+.title {
+  margin: 12px 0 8px;
+  font-size: 24px;
+}
+
+.text {
+  margin: 0 0 24px;
+  color: $text-muted;
+}
+
+.link {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: $primary;
+  color: #fff;
+  font-weight: 600;
+
+  &:hover {
+    background: $primary-dark;
+  }
+}

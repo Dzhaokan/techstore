@@ -1,5 +1,17 @@
+import { Link } from 'react-router-dom';
+import styles from './NotFoundPage.module.scss';
+
 function NotFoundPage() {
-  return <h1>Страница не найдена</h1>;
+  return (
+    <div className={styles.page}>
+      <div className={styles.code}>404</div>
+      <h1 className={styles.title}>Ничего не найдено</h1>
+      <p className={styles.text}>Такой страницы нет, но в каталоге точно что-то есть</p>
+      <Link to="/" className={styles.link}>
+        Вернуться в каталог
+      </Link>
+    </div>
+  );
 }
 
 export default NotFoundPage;
