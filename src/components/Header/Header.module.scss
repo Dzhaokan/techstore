@@ -14,7 +14,6 @@
   padding: 12px 16px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 16px;
 }
 
@@ -22,6 +21,7 @@
   font-weight: 700;
   font-size: 20px;
   color: $primary;
+  margin-right: auto;
 }
 
 .nav {
@@ -59,9 +59,17 @@
   text-align: center;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
+  .inner {
+    flex-wrap: wrap;
+    padding: 10px 16px;
+  }
+
   .nav {
-    gap: 12px;
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
     font-size: 14px;
   }
 }
