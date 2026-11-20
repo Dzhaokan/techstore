@@ -55,6 +55,10 @@ export default cartSlice.reducer;
 
 export const selectCartItems = (state: RootState) => state.cart.items;
 
+export const selectCartCount = createSelector(selectCartItems, (items) =>
+  items.reduce((sum, item) => sum + item.quantity, 0),
+);
+
 export const selectCartTotal = createSelector(selectCartItems, (items) =>
   items.reduce((sum, item) => sum + item.product.price * item.quantity, 0),
 );

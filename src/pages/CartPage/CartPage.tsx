@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { clearCart, selectCartItems, selectCartTotal } from '../../features/cart/cartSlice';
+import {
+  clearCart,
+  selectCartCount,
+  selectCartItems,
+  selectCartTotal,
+} from '../../features/cart/cartSlice';
 import { formatPrice } from '../../utils/format';
 import EmptyState from '../../components/EmptyState/EmptyState';
 import CartItem from './CartItem';
@@ -9,6 +14,7 @@ import styles from './CartPage.module.scss';
 function CartPage() {
   const dispatch = useAppDispatch();
   const items = useAppSelector(selectCartItems);
+  const count = useAppSelector(selectCartCount);
   const total = useAppSelector(selectCartTotal);
 
   if (items.length === 0) {
@@ -24,8 +30,6 @@ function CartPage() {
       />
     );
   }
-
-  const count = items.reduce((sum, item) => sum + item.quantity, 0);
 
   const handleCheckout = () => {
     // оплаты по тз нет, просто имитируем
