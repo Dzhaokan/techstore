@@ -1,0 +1,105 @@
+@use '../../styles/variables' as *;
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.heading {
+  margin: 0;
+  font-size: 28px;
+}
+
+.clearBtn {
+  padding: 7px 12px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: $danger;
+  font-size: 14px;
+  font-weight: 600;
+
+  &:hover {
+    background: rgba(217, 83, 79, 0.1);
+  }
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap: 24px;
+  align-items: start;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.summary {
+  position: sticky;
+  top: 80px;
+  padding: 20px;
+  background: $white;
+  border: 1px solid $border;
+  border-radius: $radius;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  color: $text-muted;
+}
+
+.totalPrice {
+  font-size: 22px;
+  font-weight: 700;
+  color: $text;
+}
+
+.checkout,
+.link {
+  display: inline-block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: $primary;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  transition: background 0.15s;
+
+  &:hover {
+    background: $primary-dark;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $primary-dark;
+    outline-offset: 2px;
+  }
+}
+
+.link {
+  width: auto;
+  margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .summary {
+    position: static;
+  }
+}
