@@ -1,5 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useGetProductsQuery } from '../../features/products/productsApi';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { addToCart, selectCartItemById } from '../../features/cart/cartSlice';
 import { formatCategory, formatPrice } from '../../utils/format';
 import Loader from '../../components/Loader/Loader';
 import EmptyState from '../../components/EmptyState/EmptyState';
@@ -11,6 +13,9 @@ function ProductPage() {
 
   const { data: products, isLoading, isError } = useGetProductsQuery();
   const product = products?.find((p) => p.id === productId);
+
+  const dispatch = useAppDispatch();
+  const cartItem = useAppSelector(selectCartItemById(productId));
 
   if (isLoading) return <Loader />;
 
@@ -48,7 +53,17 @@ function ProductPage() {
           <div className={styles.rating}>★ {product.rating.toFixed(1)}</div>
           <p className={styles.description}>{product.description}</p>
           <div className={styles.price}>{formatPrice(product.price)}</div>
-          {/* TODO: кнопки "в корзину" и "в избранное", когда будут слайсы */}
+
+          <div className={styles.actions}>
+            <button
+              type="button"
+              className={styles.addBtn}
+              onClick={() => dispatch(addToCart(product))}
+            >
+              {cartItem ? `В корзине (${cartItem.quantity}), добавить еще` : 'В корзину'}
+            </button>
+            {/* TODO: избранное */}
+          </div>
         </div>
       </div>
     </div>

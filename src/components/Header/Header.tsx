@@ -1,7 +1,11 @@
 import { NavLink } from 'react-router-dom';
+import { useAppSelector } from '../../app/hooks';
+import { selectCartItems } from '../../features/cart/cartSlice';
 import styles from './Header.module.scss';
 
 const Header = () => {
+  const cartCount = useAppSelector(selectCartItems).length;
+
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
@@ -18,6 +22,7 @@ const Header = () => {
           </NavLink>
           <NavLink to="/cart" className={({ isActive }) => (isActive ? styles.active : '')}>
             Корзина
+            {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
           </NavLink>
         </nav>
       </div>
