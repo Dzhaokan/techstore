@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useGetProductsQuery } from '../../features/products/productsApi';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addToCart, selectCartItemById } from '../../features/cart/cartSlice';
+import { toggleFavorite, selectIsFavorite } from '../../features/favorites/favoritesSlice';
 import { formatCategory, formatPrice } from '../../utils/format';
 import Loader from '../../components/Loader/Loader';
 import EmptyState from '../../components/EmptyState/EmptyState';
@@ -16,6 +17,7 @@ function ProductPage() {
 
   const dispatch = useAppDispatch();
   const cartItem = useAppSelector(selectCartItemById(productId));
+  const isFavorite = useAppSelector(selectIsFavorite(productId));
 
   if (isLoading) return <Loader />;
 
@@ -62,7 +64,13 @@ function ProductPage() {
             >
               {cartItem ? `В корзине (${cartItem.quantity}), добавить еще` : 'В корзину'}
             </button>
-            {/* TODO: избранное */}
+            <button
+              type="button"
+              className={styles.favBtn}
+              onClick={() => dispatch(toggleFavorite(product.id))}
+            >
+              {isFavorite ? '♥ В избранном' : '♡ В избранное'}
+            </button>
           </div>
         </div>
       </div>

@@ -1,10 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks';
 import { selectCartCount } from '../../features/cart/cartSlice';
+import { selectFavoritesCount } from '../../features/favorites/favoritesSlice';
 import styles from './Header.module.scss';
 
 const Header = () => {
   const cartCount = useAppSelector(selectCartCount);
+  const favoritesCount = useAppSelector(selectFavoritesCount);
 
   return (
     <header className={styles.header}>
@@ -19,6 +21,7 @@ const Header = () => {
           </NavLink>
           <NavLink to="/favorites" className={({ isActive }) => (isActive ? styles.active : '')}>
             Избранное
+            {favoritesCount > 0 && <span className={styles.badge}>{favoritesCount}</span>}
           </NavLink>
           <NavLink to="/cart" className={({ isActive }) => (isActive ? styles.active : '')}>
             Корзина
