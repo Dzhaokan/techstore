@@ -8,6 +8,7 @@ import {
 } from '../../features/cart/cartSlice';
 import { formatPrice } from '../../utils/format';
 import EmptyState from '../../components/EmptyState/EmptyState';
+import Button from '../../components/Button/Button';
 import CartItem from './CartItem';
 import styles from './CartPage.module.scss';
 
@@ -23,8 +24,8 @@ function CartPage() {
         title="Корзина пуста"
         text="Добавьте что-нибудь из каталога"
         action={
-          <Link to="/" className={styles.link}>
-            Перейти в каталог
+          <Link to="/">
+            <Button>Перейти в каталог</Button>
           </Link>
         }
       />
@@ -40,9 +41,9 @@ function CartPage() {
     <div>
       <div className={styles.top}>
         <h1 className={styles.heading}>Корзина</h1>
-        <button type="button" className={styles.clearBtn} onClick={() => dispatch(clearCart())}>
+        <Button variant="danger" size="sm" onClick={() => dispatch(clearCart())}>
           Очистить корзину
-        </button>
+        </Button>
       </div>
 
       <div className={styles.layout}>
@@ -61,9 +62,9 @@ function CartPage() {
             <span>Итого</span>
             <span className={styles.totalPrice}>{formatPrice(total)}</span>
           </div>
-          <button type="button" className={styles.checkout} onClick={handleCheckout}>
+          <Button className={styles.checkout} onClick={handleCheckout}>
             Оформить заказ
-          </button>
+          </Button>
         </aside>
       </div>
     </div>

@@ -6,6 +6,7 @@ import { toggleFavorite, selectIsFavorite } from '../../features/favorites/favor
 import { formatCategory, formatPrice } from '../../utils/format';
 import Loader from '../../components/Loader/Loader';
 import EmptyState from '../../components/EmptyState/EmptyState';
+import Button from '../../components/Button/Button';
 import styles from './ProductPage.module.scss';
 
 function ProductPage() {
@@ -30,8 +31,8 @@ function ProductPage() {
       <EmptyState
         title="Товар не найден"
         action={
-          <Link to="/" className={styles.backBtn}>
-            В каталог
+          <Link to="/">
+            <Button variant="secondary">В каталог</Button>
           </Link>
         }
       />
@@ -57,20 +58,12 @@ function ProductPage() {
           <div className={styles.price}>{formatPrice(product.price)}</div>
 
           <div className={styles.actions}>
-            <button
-              type="button"
-              className={styles.addBtn}
-              onClick={() => dispatch(addToCart(product))}
-            >
+            <Button onClick={() => dispatch(addToCart(product))}>
               {cartItem ? `В корзине (${cartItem.quantity}), добавить еще` : 'В корзину'}
-            </button>
-            <button
-              type="button"
-              className={styles.favBtn}
-              onClick={() => dispatch(toggleFavorite(product.id))}
-            >
+            </Button>
+            <Button variant="secondary" onClick={() => dispatch(toggleFavorite(product.id))}>
               {isFavorite ? '♥ В избранном' : '♡ В избранное'}
-            </button>
+            </Button>
           </div>
         </div>
       </div>

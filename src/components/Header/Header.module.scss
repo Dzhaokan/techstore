@@ -27,22 +27,22 @@
 .nav {
   display: flex;
   gap: 20px;
+}
 
-  a {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 4px 0;
-    border-bottom: 2px solid transparent;
-    transition: border-color 0.15s;
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.15s;
 
-    &:hover {
-      border-color: $primary-light;
-    }
+  &:hover {
+    border-color: $primary-light;
+  }
 
-    &.active {
-      border-color: $primary;
-    }
+  &.active {
+    border-color: $primary;
   }
 }
 

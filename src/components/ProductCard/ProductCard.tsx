@@ -3,6 +3,7 @@ import type { Product } from '../../types/product';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addToCart, selectCartItemById } from '../../features/cart/cartSlice';
 import { formatCategory, formatPrice } from '../../utils/format';
+import Button from '../Button/Button';
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
 import styles from './ProductCard.module.scss';
 
@@ -35,13 +36,9 @@ function ProductCard({ product }: Props) {
           <span className={styles.rating}>★ {product.rating.toFixed(1)}</span>
         </div>
 
-        <button
-          type="button"
-          className={styles.addBtn}
-          onClick={() => dispatch(addToCart(product))}
-        >
+        <Button size="sm" className={styles.addBtn} onClick={() => dispatch(addToCart(product))}>
           {cartItem ? `В корзине (${cartItem.quantity})` : 'В корзину'}
-        </button>
+        </Button>
       </div>
     </article>
   );

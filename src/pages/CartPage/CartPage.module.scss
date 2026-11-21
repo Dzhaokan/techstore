@@ -13,20 +13,6 @@
   font-size: 28px;
 }
 
-.clearBtn {
-  padding: 7px 12px;
-  border: none;
-  border-radius: 8px;
-  background: transparent;
-  color: $danger;
-  font-size: 14px;
-  font-weight: 600;
-
-  &:hover {
-    background: rgba(217, 83, 79, 0.1);
-  }
-}
-
 .layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 280px;
@@ -64,29 +50,9 @@
   color: $text;
 }
 
-.checkout,
-.link {
-  display: inline-block;
+.checkout {
   width: 100%;
   margin-top: 8px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  background: $primary;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 600;
-  text-align: center;
-  transition: background 0.15s;
-
-  &:hover {
-    background: $primary-dark;
-  }
-}
-
-.link {
-  width: auto;
-  margin-top: 0;
 }
 
 @media (max-width: 900px) {

@@ -5,6 +5,7 @@ import { useGetProductsQuery } from '../../features/products/productsApi';
 import ProductGrid from '../../components/ProductGrid/ProductGrid';
 import Loader from '../../components/Loader/Loader';
 import EmptyState from '../../components/EmptyState/EmptyState';
+import Button from '../../components/Button/Button';
 import styles from './FavoritesPage.module.scss';
 
 function FavoritesPage() {
@@ -17,8 +18,8 @@ function FavoritesPage() {
         title="В избранном пока ничего нет"
         text="Нажмите на сердечко у товара, чтобы сохранить его сюда"
         action={
-          <Link to="/" className={styles.link}>
-            Перейти в каталог
+          <Link to="/">
+            <Button>Перейти в каталог</Button>
           </Link>
         }
       />
