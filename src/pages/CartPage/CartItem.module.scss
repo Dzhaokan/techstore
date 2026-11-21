@@ -98,3 +98,40 @@
     background: rgba(217, 83, 79, 0.1);
   }
 }
+
+@media (max-width: 640px) {
+  .item {
+    grid-template-columns: 64px minmax(0, 1fr) auto;
+    grid-template-areas:
+      'image info remove'
+      'image quantity total';
+    gap: 10px 12px;
+  }
+
+  .imageLink {
+    grid-area: image;
+  }
+
+  .image {
+    width: 64px;
+    height: 64px;
+  }
+
+  .info {
+    grid-area: info;
+  }
+
+  .quantity {
+    grid-area: quantity;
+  }
+
+  .total {
+    grid-area: total;
+    min-width: 0 !important;
+  }
+
+  .remove {
+    grid-area: remove;
+    justify-self: end;
+  }
+}
