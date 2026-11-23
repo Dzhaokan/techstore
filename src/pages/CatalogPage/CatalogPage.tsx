@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react';
 import { useGetProductsQuery } from '../../features/products/productsApi';
 import CatalogFilters from '../../components/CatalogFilters/CatalogFilters';
 import ProductGrid from '../../components/ProductGrid/ProductGrid';
-import Loader from '../../components/Loader/Loader';
 import EmptyState from '../../components/EmptyState/EmptyState';
 import Button from '../../components/Button/Button';
 import { useDebounce } from '../../hooks/useDebounce';
@@ -23,8 +22,6 @@ function CatalogPage() {
   );
 
   const handleReset = () => setFilters(initialFilters);
-
-  if (isLoading) return <Loader />;
 
   if (isError) {
     return (
@@ -54,7 +51,9 @@ function CatalogPage() {
         onReset={handleReset}
       />
 
-      {visibleProducts.length === 0 ? (
+      {isLoading ? (
+        <ProductGrid isLoading />
+      ) : visibleProducts.length === 0 ? (
         <EmptyState
           title="Ничего не найдено"
           text="Попробуйте изменить запрос или сбросить фильтры"

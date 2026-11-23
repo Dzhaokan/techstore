@@ -3,7 +3,6 @@ import { useAppSelector } from '../../app/hooks';
 import { selectFavoriteIds } from '../../features/favorites/favoritesSlice';
 import { useGetProductsQuery } from '../../features/products/productsApi';
 import ProductGrid from '../../components/ProductGrid/ProductGrid';
-import Loader from '../../components/Loader/Loader';
 import EmptyState from '../../components/EmptyState/EmptyState';
 import Button from '../../components/Button/Button';
 import styles from './FavoritesPage.module.scss';
@@ -26,8 +25,6 @@ function FavoritesPage() {
     );
   }
 
-  if (isLoading) return <Loader />;
-
   if (isError) {
     return <p>Не удалось загрузить товары, попробуйте обновить страницу</p>;
   }
@@ -37,7 +34,7 @@ function FavoritesPage() {
   return (
     <div>
       <h1 className={styles.heading}>Избранное</h1>
-      <ProductGrid products={favorites} />
+      <ProductGrid products={favorites} isLoading={isLoading} />
     </div>
   );
 }

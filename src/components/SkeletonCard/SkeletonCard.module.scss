@@ -1,0 +1,60 @@
+@use '../../styles/variables' as *;
+
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: $white;
+  border: 1px solid $border;
+  border-radius: $radius;
+  overflow: hidden;
+}
+
+.image {
+  aspect-ratio: 1;
+  background: $border;
+}
+
+.body {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.line,
+.lineShort,
+.button {
+  height: 14px;
+  border-radius: 4px;
+  background: $border;
+}
+
+.lineShort {
+  width: 40%;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+.button {
+  height: 32px;
+  margin-top: 8px;
+  border-radius: 8px;
+}
+
+.image,
+.line,
+.lineShort,
+.button {
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
