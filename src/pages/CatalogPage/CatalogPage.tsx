@@ -8,10 +8,13 @@ import { useDebounce } from '../../hooks/useDebounce';
 import { filterProducts, initialFilters, type Filters } from '../../utils/filterProducts';
 import styles from './CatalogPage.module.scss';
 
+const PAGE_SIZE = 12;
+
 function CatalogPage() {
   const { data: products, isLoading, isError, refetch } = useGetProductsQuery();
 
   const [filters, setFilters] = useState<Filters>(initialFilters);
+  const [limit, setLimit] = useState(PAGE_SIZE);
   const debouncedSearch = useDebounce(filters.search);
 
   const categories = [...new Set(products?.map((p) => p.category))].sort();
@@ -21,7 +24,12 @@ function CatalogPage() {
     [products, filters, debouncedSearch],
   );
 
-  const handleReset = () => setFilters(initialFilters);
+  const handleFiltersChange = (next: Filters) => {
+    setFilters(next);
+    setLimit(PAGE_SIZE);
+  };
+
+  const handleReset = () => handleFiltersChange(initialFilters);
 
   if (isError) {
     return (
@@ -47,7 +55,7 @@ function CatalogPage() {
       <CatalogFilters
         filters={filters}
         categories={categories}
-        onChange={setFilters}
+        onChange={handleFiltersChange}
         onReset={handleReset}
       />
 
@@ -64,7 +72,16 @@ function CatalogPage() {
           }
         />
       ) : (
-        <ProductGrid products={visibleProducts} />
+        <>
+          <ProductGrid products={visibleProducts.slice(0, limit)} />
+          {limit < visibleProducts.length && (
+            <div className={styles.more}>
+              <Button variant="secondary" onClick={() => setLimit(limit + PAGE_SIZE)}>
+                Показать еще
+              </Button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
