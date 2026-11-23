@@ -1,8 +1,9 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useGetProductsQuery } from '../../features/products/productsApi';
 import CatalogFilters from '../../components/CatalogFilters/CatalogFilters';
 import ProductGrid from '../../components/ProductGrid/ProductGrid';
 import EmptyState from '../../components/EmptyState/EmptyState';
+import Loader from '../../components/Loader/Loader';
 import Button from '../../components/Button/Button';
 import { useDebounce } from '../../hooks/useDebounce';
 import { filterProducts, initialFilters, type Filters } from '../../utils/filterProducts';
@@ -16,6 +17,7 @@ function CatalogPage() {
   const [filters, setFilters] = useState<Filters>(initialFilters);
   const [limit, setLimit] = useState(PAGE_SIZE);
   const debouncedSearch = useDebounce(filters.search);
+  const sentinelRef = useRef<HTMLDivElement>(null);
 
   const categories = [...new Set(products?.map((p) => p.category))].sort();
 
@@ -23,6 +25,20 @@ function CatalogPage() {
     () => filterProducts(products ?? [], { ...filters, search: debouncedSearch }),
     [products, filters, debouncedSearch],
   );
+
+  const hasMore = limit < visibleProducts.length;
+
+  useEffect(() => {
+    const el = sentinelRef.current;
+    if (!el || !hasMore) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) setLimit((prev) => prev + PAGE_SIZE);
+    });
+    observer.observe(el);
+
+    return () => observer.disconnect();
+  }, [hasMore]);
 
   const handleFiltersChange = (next: Filters) => {
     setFilters(next);
@@ -74,13 +90,16 @@ function CatalogPage() {
       ) : (
         <>
           <ProductGrid products={visibleProducts.slice(0, limit)} />
-          {limit < visibleProducts.length && (
-            <div className={styles.more}>
-              <Button variant="secondary" onClick={() => setLimit(limit + PAGE_SIZE)}>
-                Показать еще
-              </Button>
+          {hasMore && (
+            <div ref={sentinelRef}>
+              <Loader />
             </div>
           )}
+          {/* <div className={styles.more}>
+            <Button variant="secondary" onClick={() => setLimit(limit + PAGE_SIZE)}>
+              Показать еще
+            </Button>
+          </div> */}
         </>
       )}
     </div>
