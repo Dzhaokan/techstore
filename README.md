@@ -1,32 +1,47 @@
-# React + TypeScript + Vite
+# TechStore
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Тестовое задание - мини магазин электроники на React.
 
-Currently, two official plugins are available:
+Что умеет:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- каталог товаров, поиск, фильтр по категории, сортировка по цене и рейтингу, подгрузка при скролле
+- страница товара
+- корзина (колличество, удаление, итоговая сумма)
+- избранное
+- корзина и избранное сохраняються в localStorage
+- темная тема
 
-## React Compiler
+## Стек
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+React 19, TypeScript, Redux Toolkit + RTK Query, React Router, SCSS modules, Vite.
 
-## Expanding the Oxlint configuration
+## Как запустить
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Еще есть `npm run build` и `npm run lint`.
+
+## Откуда данные
+
+https://dummyjson.com/docs/products - там товары всех категорий, беру только технику
+(smartphones, laptops, tablets, mobile-accessories). Названия и цены (в долларах) оставил
+как отдает api. Если api не отвечает, берется копия из `src/data/products.json`.
+
+## Что в redux
+
+- `cart` - корзина, товар + количество
+- `favorites` - id избранных товаров
+- `productsApi` - rtk query, загрузка товаров
+
+Корзина и избранное нужны сразу в нескольких местах (хедер, карточки, страницы), поэтому
+они в сторе. Сумма и количество не хранятся, считаются селекторами.
+
+Фильтры каталога держу в useState на самой странице, они больше нигде не нужны.
+Тема тоже не в redux, просто хук + localStorage.
+
+## Деплой
+
+Пока нет.
