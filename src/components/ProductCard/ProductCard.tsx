@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import type { Product } from '../../types/product';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addToCart, selectCartItemById } from '../../features/cart/cartSlice';
@@ -14,6 +15,11 @@ type Props = {
 function ProductCard({ product }: Props) {
   const dispatch = useAppDispatch();
   const cartItem = useAppSelector(selectCartItemById(product.id));
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+    toast.success('Добавлено в корзину');
+  };
 
   const link = `/product/${product.id}`;
 
@@ -36,7 +42,7 @@ function ProductCard({ product }: Props) {
           <span className={styles.rating}>★ {product.rating.toFixed(1)}</span>
         </div>
 
-        <Button size="sm" className={styles.addBtn} onClick={() => dispatch(addToCart(product))}>
+        <Button size="sm" className={styles.addBtn} onClick={handleAddToCart}>
           {cartItem ? `В корзине (${cartItem.quantity})` : 'В корзину'}
         </Button>
       </div>

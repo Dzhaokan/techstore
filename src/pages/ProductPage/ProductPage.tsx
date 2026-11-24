@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import { useGetProductsQuery } from '../../features/products/productsApi';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addToCart, selectCartItemById } from '../../features/cart/cartSlice';
@@ -58,7 +59,12 @@ function ProductPage() {
           <div className={styles.price}>{formatPrice(product.price)}</div>
 
           <div className={styles.actions}>
-            <Button onClick={() => dispatch(addToCart(product))}>
+            <Button
+              onClick={() => {
+                dispatch(addToCart(product));
+                toast.success('Добавлено в корзину');
+              }}
+            >
               {cartItem ? `В корзине (${cartItem.quantity}), добавить еще` : 'В корзину'}
             </Button>
             <Button variant="secondary" onClick={() => dispatch(toggleFavorite(product.id))}>

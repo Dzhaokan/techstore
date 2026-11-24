@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import {
   clearCart,
@@ -33,7 +34,7 @@ function CartPage() {
   }
 
   const handleCheckout = () => {
-    alert('Заказ оформлен!');
+    toast.success('Заказ оформлен!');
     dispatch(clearCart());
   };
 
