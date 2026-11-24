@@ -72,6 +72,12 @@ button {
   cursor: pointer;
 }
 
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
 #root {
   min-height: 100vh;
   display: flex;
