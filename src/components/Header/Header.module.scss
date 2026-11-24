@@ -1,7 +1,7 @@
 @use '../../styles/variables' as *;
 
 .header {
-  background: $white;
+  background: $surface;
   border-bottom: 1px solid $border;
   position: sticky;
   top: 0;
@@ -57,6 +57,32 @@
   font-weight: 600;
   line-height: 20px;
   text-align: center;
+}
+
+.themeBtn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid $border;
+  border-radius: 50%;
+  background: transparent;
+  color: $text-muted;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    color: $primary;
+    border-color: $primary;
+  }
 }
 
 @media (max-width: 560px) {

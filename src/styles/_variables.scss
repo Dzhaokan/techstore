@@ -1,16 +1,15 @@
-$primary: #3a6ff2;
-$primary-dark: #2f5bd0;
-$primary-light: #a4bcf8;
+$bg: var(--bg);
+$surface: var(--surface);
+$text: var(--text);
+$text-muted: var(--text-muted);
+$border: var(--border);
 
-$text: #222;
-$text-muted: #777;
+$primary: var(--primary);
+$primary-dark: var(--primary-dark);
+$primary-light: var(--primary-light);
 
-$border: #e2e4e9;
-$bg: #f4f5f7;
-$white: #fff;
-
-$star: #f2a200;
-$danger: #d9534f;
+$star: var(--star);
+$danger: var(--danger);
 
 $radius: 10px;
 $container: 1200px;

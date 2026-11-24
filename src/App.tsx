@@ -20,7 +20,13 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
-      <Toaster position="top-center" />
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          duration: 2000,
+          style: { background: 'var(--surface)', color: 'var(--text)' },
+        }}
+      />
     </BrowserRouter>
   );
 }

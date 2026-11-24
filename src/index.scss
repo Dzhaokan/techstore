@@ -1,5 +1,32 @@
 @use './styles/variables' as *;
 
+:root {
+  --bg: #f4f5f7;
+  --surface: #fff;
+  --text: #222;
+  --text-muted: #777;
+  --border: #e2e4e9;
+  --primary: #3a6ff2;
+  --primary-dark: #2f5bd0;
+  --primary-light: #a4bcf8;
+  --star: #f2a200;
+  --danger: #d9534f;
+}
+
+// темная тема
+[data-theme='dark'] {
+  --bg: #15171c;
+  --surface: #1e2127;
+  --text: #e6e6e6;
+  --text-muted: #9a9ea7;
+  --border: #2d313a;
+  --primary: #5d8bf4;
+  --primary-dark: #4b77dc;
+  --primary-light: #35507f;
+  --star: #f5b331;
+  --danger: #e3645f;
+}
+
 *,
 *::before,
 *::after {
@@ -25,6 +52,9 @@ body {
   color: $text;
   background: $bg;
   min-width: 320px;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 img {

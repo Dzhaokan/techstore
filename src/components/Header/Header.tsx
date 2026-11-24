@@ -1,13 +1,16 @@
 import { NavLink } from 'react-router-dom';
+import { Moon, Sun } from 'lucide-react';
 import clsx from 'clsx';
 import { useAppSelector } from '../../app/hooks';
 import { selectCartCount } from '../../features/cart/cartSlice';
 import { selectFavoritesCount } from '../../features/favorites/favoritesSlice';
+import { useTheme } from '../../hooks/useTheme';
 import styles from './Header.module.scss';
 
 const Header = () => {
   const cartCount = useAppSelector(selectCartCount);
   const favoritesCount = useAppSelector(selectFavoritesCount);
+  const { theme, toggleTheme } = useTheme();
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
     clsx(styles.link, isActive && styles.active);
@@ -32,6 +35,15 @@ const Header = () => {
             {cartCount > 0 && <span className={styles.badge}>{cartCount}</span>}
           </NavLink>
         </nav>
+
+        <button
+          type="button"
+          className={styles.themeBtn}
+          onClick={toggleTheme}
+          title={theme === 'dark' ? 'Светлая тема' : 'Темная тема'}
+        >
+          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
       </div>
     </header>
   );
