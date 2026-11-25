@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
-import { loadFromStorage, saveToStorage } from '../utils/storage';
+import { saveToStorage } from '../utils/storage';
 
 type Theme = 'light' | 'dark';
 
 const THEME_STORAGE_KEY = 'theme';
 
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>(loadFromStorage<Theme>(THEME_STORAGE_KEY, 'light'));
+  const [theme, setTheme] = useState<Theme>(
+    document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light',
+  );
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;

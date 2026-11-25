@@ -11,6 +11,7 @@ const Header = () => {
   const cartCount = useAppSelector(selectCartCount);
   const favoritesCount = useAppSelector(selectFavoritesCount);
   const { theme, toggleTheme } = useTheme();
+  const isDark = theme === 'dark';
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
     clsx(styles.link, isActive && styles.active);
@@ -40,9 +41,9 @@ const Header = () => {
           type="button"
           className={styles.themeBtn}
           onClick={toggleTheme}
-          title={theme === 'dark' ? 'Светлая тема' : 'Темная тема'}
+          title={isDark ? 'Светлая тема' : 'Темная тема'}
         >
-          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          {isDark ? <Sun size={18} /> : <Moon size={18} />}
         </button>
       </div>
     </header>
