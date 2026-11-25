@@ -44,4 +44,4 @@ https://dummyjson.com/docs/products - там товары всех катего�
 
 ## Деплой
 
-Пока нет.
+https://techstore-steel-theta.vercel.app/
